@@ -16,8 +16,9 @@ test("handles errors for scoops and toppings routes", async () => {
   render(<OrderEntry />);
 
   //get by - cause its there on initial render
-  //query - not to be there right away
-  // find cause its asynchronous
+  //query by - not to be there right away - think of useeffect
+  // find by cause its asynchronous
+  // waitfor special case cause im waiting on more than one asynchronous result
   await waitFor(async () => {
     const alerts = await screen.findAllByRole("alert");
     expect(alerts).toHaveLength(2);
