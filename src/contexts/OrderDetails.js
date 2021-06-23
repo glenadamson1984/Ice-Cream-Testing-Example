@@ -4,6 +4,14 @@ import { pricePerItem } from "../constants";
 // this follows the pattern recommended by Kent C Dodds
 // https://kentcdodds.com/blog/application-state-management-with-react
 
+const formatCurrency = (amount) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  }).format(amount);
+};
+
 const OrderDetails = createContext();
 
 // create custom hook
@@ -31,10 +39,11 @@ export const OrderDetailsProvider = (props) => {
     scoops: new Map(),
     toppings: new Map(),
   });
+  const zeroCurrency = formatCurrency(0);
   const [totals, setTotals] = useState({
-    scoops: 0,
-    toppings: 0,
-    grandTotal: 0,
+    scoops: zeroCurrency,
+    toppings: zeroCurrency,
+    grandTotal: zeroCurrency,
   });
 
   useEffect(() => {
@@ -44,9 +53,9 @@ export const OrderDetailsProvider = (props) => {
     const grandTotal = scoopsSubTotal + toppingsSubTotal;
 
     setTotals({
-      scoops: scoopsSubTotal,
-      toppings: toppingsSubTotal,
-      grandTotal,
+      scoops: formatCurrency(scoopsSubTotal),
+      toppings: formatCurrency(toppingsSubTotal),
+      grandTotal: formatCurrency(grandTotal),
     });
   }, [optionCounts]);
 
