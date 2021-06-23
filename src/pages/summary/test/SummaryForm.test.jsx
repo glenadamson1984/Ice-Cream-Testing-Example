@@ -1,12 +1,9 @@
 import {
   render,
   screen,
-  fireEvent,
   waitForElementToBeRemoved,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
-import App from "../../../App";
 import SummaryForm from "../SummaryForm";
 
 test("check that checkbox is not enabled and button is disable on initial load", () => {
@@ -21,7 +18,7 @@ test("check that checkbox is not enabled and button is disable on initial load",
 });
 
 test("checkbox enables button on first click and disables on the second", () => {
-  render(<App />);
+  render(<SummaryForm />);
   const button = screen.getByRole("button", { name: /confirm order/i });
   const checkbox = screen.getByRole("checkbox", {
     name: /terms and conditions/i,
@@ -39,7 +36,7 @@ test("checkbox enables button on first click and disables on the second", () => 
 });
 
 test("popover responds to hover events", async () => {
-  render(<App />);
+  render(<SummaryForm />);
 
   // popover starts out hidden
   const nullPopover = screen.queryByText(

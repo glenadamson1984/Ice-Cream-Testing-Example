@@ -1,8 +1,11 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import {
+  render,
+  screen,
+  waitFor,
+} from "../../../test-utils/testing-library-utils";
 import OrderEntry from "../OrderEntry";
 import { rest } from "msw";
 import { server } from "../../../mocks/server";
-import { OrderDetailsProvider } from "../../../contexts/OrderDetails";
 
 test("handles errors for scoops and toppings routes", async () => {
   server.resetHandlers(
@@ -14,7 +17,7 @@ test("handles errors for scoops and toppings routes", async () => {
     })
   );
 
-  render(<OrderEntry />, { wrapper: OrderDetailsProvider });
+  render(<OrderEntry />);
 
   //get by - cause its there on initial render
   //query by - not to be there right away - think of useeffect
