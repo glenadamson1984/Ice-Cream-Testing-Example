@@ -1,16 +1,9 @@
 import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import { pricePerItem } from "../constants";
+import { formatCurrency } from "../utilites";
 
 // this follows the pattern recommended by Kent C Dodds
 // https://kentcdodds.com/blog/application-state-management-with-react
-
-const formatCurrency = (amount) => {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  }).format(amount);
-};
 
 const OrderDetails = createContext();
 
