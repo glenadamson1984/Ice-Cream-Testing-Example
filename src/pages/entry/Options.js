@@ -9,7 +9,6 @@ import { useOrderDetails } from "../../contexts/OrderDetails";
 import { formatCurrency } from "../../utilites";
 
 const Options = ({ optionType }) => {
-  const glen = "";
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
   const [orderDetails, updateItemCount] = useOrderDetails();

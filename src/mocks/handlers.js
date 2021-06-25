@@ -18,4 +18,7 @@ export const handlers = [
       ])
     );
   }),
+  rest.post("http://localhost:3030/toppings", (req, res, ctx) => {
+    return res(ctx.json({ orderNumber: 1234 }));
+  }),
 ];
