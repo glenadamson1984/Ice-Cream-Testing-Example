@@ -17,6 +17,9 @@ test("handles errors for scoops and toppings routes", async () => {
     })
   );
 
+  // this will debug the dom at any point in the test
+  // screen.debug()
+
   // passing a mock function - a jest mock as its expected as a prop
   render(<OrderEntry setOrderPhase={jest.fn()} />);
 
