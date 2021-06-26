@@ -17,7 +17,8 @@ test("handles errors for scoops and toppings routes", async () => {
     })
   );
 
-  render(<OrderEntry />);
+  // passing a mock function - a jest mock as its expected as a prop
+  render(<OrderEntry setOrderPhase={jest.fn()} />);
 
   //get by - cause its there on initial render
   //query by - not to be there right away - think of useeffect
